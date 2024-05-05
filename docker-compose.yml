@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+    mongodb:
+        image: mongo:6-jammy
+        container_name: attendece-report
+        environment:
+            # MONGO_INITDB_ROOT_USERNAME: root
+            # MONGO_INITDB_ROOT_PASSWORD: relatorioibbs2k24
+            MONGO_INITDB_DATABASE: attendece-report
+        ports:
+            - 27017:27017
+        volumes:
+            - dbdata6:/data/db
+
+volumes:
+    dbdata6:
