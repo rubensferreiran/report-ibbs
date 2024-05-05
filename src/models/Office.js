@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const OficceSchema = new Schema({
-    nameoficce: { type: String, required: true, uppercase: true },
+const OfficeSchema = new Schema({
+    nameoffice: { type: String, required: true, uppercase: true },
 });
 
-OficceSchema.pre('save', function (next) {
-    const requiredFields = ['nameoficce'];
+OfficeSchema.pre('save', function (next) {
+    const requiredFields = ['nameoffice'];
     const missingFields = requiredFields.filter(field => !this[field]);
     if (missingFields.length > 0) {
         const missingFieldNames = missingFields.join(', ');
@@ -19,4 +19,4 @@ OficceSchema.pre('save', function (next) {
     return next();
 });
 
-module.exports = mongoose.model('Office', OficceSchema);
+module.exports = mongoose.model('Office', OfficeSchema);
