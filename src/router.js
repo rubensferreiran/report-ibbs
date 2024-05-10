@@ -6,6 +6,7 @@ const router = new express.Router();
 
 const UserController = require('./controllers/UserController');
 const OfficeController = require('./controllers/OfficeController');
+const MembersController = require('./controllers/MembersController');
 
 router.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
@@ -28,5 +29,13 @@ router.get('/office/:_id', OfficeController.getById);
 router.put('/office/:_id', OfficeController.update);
 router.post('/office', OfficeController.insert);
 router.delete('/office/:_id', OfficeController.delete);
+
+// Members
+router.get('/members/', MembersController.getAll);
+router.get('/members/:_id', MembersController.getById);
+router.get('/members/search', MembersController.getSearch);
+router.put('/members/:_id', MembersController.update);
+router.post('/members', MembersController.insert);
+router.patch('/members/:_id', MembersController.delete);
 
 module.exports = router;

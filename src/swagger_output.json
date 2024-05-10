@@ -281,6 +281,228 @@
           }
         }
       }
+    },
+    "/members/": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/members/{_id}": {
+      "get": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint para obter membro através do ID.",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint para atualizar membro.",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "document": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "birthdate": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "office": {
+                  "example": "any"
+                },
+                "maritalstatus": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint para deletar membro.",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/members/search": {
+      "get": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint para pesquisar membros.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/members": {
+      "post": {
+        "tags": [
+          "Members"
+        ],
+        "description": "Endpoint para inserir membros.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "document": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "birthdate": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "office": {
+                  "example": "any"
+                },
+                "maritalstatus": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   }
 }

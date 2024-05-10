@@ -1,12 +1,12 @@
-const Office = require('../models/Office');
+const TypesCults = require('../models/TypesCults');
 
 module.exports = {
-    // #swagger.tags = ['Office']
-    // #swagger.description = 'Endpoint to list positions.'
+    // #swagger.tags = ['Types Cult']
+    // #swagger.description = 'Endpoint to list types.'
     async getAll(req, res) {
         try {
-            const offices = await Office.find();
-            return res.json(offices);
+            const types = await TypesCults.find();
+            return res.json(types);
         } catch (error) {
             return res
                 .status(400)
@@ -15,34 +15,34 @@ module.exports = {
     },
 
     async getById(req, res) {
-        // #swagger.tags = ['Office']
-        // #swagger.description = 'Endpoint to obtain position through ID.'
+        // #swagger.tags = ['Types Cult']
+        // #swagger.description = 'Endpoint to obtain type through ID.'
         const { _id } = req.params;
-        const oficceId = await Office.findOne({ _id: _id });
-        if (!oficceId) {
+        const typeID = await TypesCults.findOne({ _id: _id });
+        if (!typeID) {
             return res.status(400).json({
                 success: false,
                 messege: 'Position not found',
             });
         }
-        return res.json(oficceId);
+        return res.json(typeID);
     },
 
     async insert(req, res) {
-        // #swagger.tags = ['Office']
+        // #swagger.tags = ['Types Cult']
         // #swagger.description = 'Endpoint to enter job title.'
         try {
-            const { nameoffice } = req.body;
-            const isExist = await Office.findOne({
-                nameoffice,
+            const { nametype } = req.body;
+            const isExist = await TypesCults.findOne({
+                nametype,
             });
             if (isExist) {
                 return res
                     .status(400)
                     .json({ error: 'Position already exists' });
             }
-            const office = await Office.create({ nameoffice });
-            return res.json(office);
+            const type = await TypesCults.create({ nametype });
+            return res.json(type);
         } catch (error) {
             if (error.name === 'ValidationError') {
                 return res.status(400).json({
@@ -59,17 +59,17 @@ module.exports = {
     },
 
     async update(req, res) {
-        // #swagger.tags = ['Office']
-        // #swagger.description = 'Endpoint to update postion.'
+        // #swagger.tags = ['Types Cult']
+        // #swagger.description = 'Endpoint to update type.'
         try {
             const { _id } = req.params;
-            const { nameoffice } = req.body;
-            let officeUpdate = await Office.findByIdAndUpdate(
+            const { nametype } = req.body;
+            let typeUpdate = await TypesCults.findByIdAndUpdate(
                 { _id: _id },
-                { nameoffice },
+                { nametype },
                 { new: true },
             );
-            return res.json(officeUpdate);
+            return res.json(typeUpdate);
         } catch (error) {
             if (error.requiredFields) {
                 return res.status(400).json({
@@ -86,11 +86,11 @@ module.exports = {
     },
 
     async delete(req, res) {
-        // #swagger.tags = ['Office']
-        // #swagger.description = 'Endpoint to delete position.'
+        // #swagger.tags = ['Types Cult']
+        // #swagger.description = 'Endpoint to delete type.'
         try {
             const { _id } = req.params;
-            await Office.findByIdAndDelete({ _id: _id });
+            await TypesCults.findByIdAndDelete({ _id: _id });
             return res.json({ messege: 'Position deleted successfully!' });
         } catch (error) {
             res.status(500).json({ messege: error.messege });
