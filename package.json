@@ -1,5 +1,5 @@
 {
-    "name": "attendance-report",
+    "name": "report-ibbs",
     "version": "1.0.0",
     "description": "Plataforma para ter controle de membros e controle de presença nos cultos",
     "main": "index.js",

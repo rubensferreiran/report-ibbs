@@ -3,11 +3,11 @@ version: '3.8'
 services:
     mongodb:
         image: mongo:6-jammy
-        container_name: attendece-report
+        container_name: report-ibbs
         environment:
             # MONGO_INITDB_ROOT_USERNAME: root
             # MONGO_INITDB_ROOT_PASSWORD: relatorioibbs2k24
-            MONGO_INITDB_DATABASE: attendece-report
+            MONGO_INITDB_DATABASE: report-ibbs
         ports:
             - 27017:27017
         volumes:
